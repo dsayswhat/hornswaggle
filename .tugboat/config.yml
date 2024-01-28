@@ -1,4 +1,4 @@
 services:
-  tugboatqa/node: current-bullseye
+  node:
+    image: tugboatqa/node:current-bullseye
 
-  
