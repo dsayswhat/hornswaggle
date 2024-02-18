@@ -1,4 +1,9 @@
 services:
   node:
     image: tugboatqa/node:current-bullseye
+    commands: 
+      init:
+         npm install
+         npm start
+         
 

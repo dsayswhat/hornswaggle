@@ -1,16 +1,16 @@
 {
-    "name": "toggle-button-broadcast",
+    "name": "hornswaggle",
     "version": "1.0.0",
     "description": "A simple web application to broadcast toggle button state using Socket.IO",
     "main": "server.js",
     "scripts": {
-      "start": "node server.js"
+        "start": "node server.js"
     },
     "dependencies": {
-      "express": "^4.17.1",
-      "socket.io": "^4.0.0"
+        "bootstrap": "^5.3.2",
+        "express": "^4.17.1",
+        "socket.io": "^4.0.0"
     },
     "author": "",
     "license": "ISC"
-  }
-  
+}
