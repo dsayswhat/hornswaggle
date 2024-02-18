@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
     socket.on('createCheckbox', (data) => {
         const { id, label } = data;
         checkboxes[id] = { checked: false, label };
-        io.emit('createCheckbox', data); // Broadcast creation to all clients
+        socket.broadcast.emit('createCheckbox', data); // Broadcast creation to all clients
     });
 
     socket.on('updateLabel', (data) => {
@@ -30,12 +30,12 @@ io.on('connection', (socket) => {
         if (checkboxes[id]) {
             checkboxes[id].label = label;
         }
-        io.emit('updateLabel', data); // Broadcast label update to all clients
+        socket.broadcast.emit('updateLabel', data); // Broadcast label update to all clients
     });
 
-    socket.on('deleteCheckbox', (id) => {
+    socket.on('removeCheckbox', (id) => {
         delete checkboxes[id];
-        io.emit('deleteCheckbox', id); // Broadcast deletion to all clients
+        socket.emit('deleteCheckbox', id); // Broadcast deletion to all clients
     });
 
     socket.on('toggleCheckbox', (data) => {
@@ -43,7 +43,9 @@ io.on('connection', (socket) => {
         if (checkboxes[id]) {
             checkboxes[id].checked = checked;
         }
-        io.emit('toggleCheckbox', data); // Broadcast toggle state to all clients
+        console.log('caught toggleCheckbox');
+        console.log(data);
+        socket.broadcast.emit('toggleCheckbox', data); // Broadcast toggle state to all clients
     });
 
     socket.on('disconnect', () => {
@@ -53,4 +55,5 @@ io.on('connection', (socket) => {
 
 server.listen(3000, () => {
     console.log('Listening on *:3000');
+    
 });
