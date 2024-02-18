@@ -12,7 +12,11 @@
     <!-- Buttons to create a new checkbox and to open the label editor -->
     <button class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLabelEditor" aria-controls="offcanvasLabelEditor">Edit Labels</button>
     <!-- Container for dynamically added checkboxes -->
-    <div id="checkboxContainer"></div>
+    <div id="checkboxContainer" class="container text-center">
+        <div id="cbxContainerRow" class="row">
+
+        </div>
+    </div>
 
     <!-- Bootstrap Offcanvas Component for Label Editing -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLabelEditor" aria-labelledby="offcanvasLabelEditorLabel">
@@ -32,3 +36,17 @@
     <script src="hornswaggle.js"></script>
 </body>
 </html>
+
+
+<div class="btn-group-lg" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+  
+    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+  
+    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+  </div>
+
+

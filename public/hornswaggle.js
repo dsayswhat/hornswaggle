@@ -30,23 +30,24 @@ socket.on('toggleCheckbox', (data) => {
     }
 });
 
+/* 
 // Handle checkbox deletion
 socket.on('deleteCheckbox', (id) => {
     console.log("caught deleteCheckbox");
-    
+
     const checkboxElement = document.getElementById(id);
     if (checkboxElement && checkboxElement.parentNode) {
         checkboxElement.parentNode.remove(); // This removes the label and the checkbox
     }
 });
-
+*/
 
 
 /*** DOM manipulation functions to add page elements ***/
 
 // Function to add a checkbox
 function addCheckbox(id, checked = false, label = '') {
-    const container = document.getElementById("checkboxContainer");
+    const container = document.getElementById("cbxContainerRow");
     if (!document.getElementById(id)) { // Prevent duplicate IDs
         const labelElement = document.createElement("label");
         labelElement.setAttribute("for", id);
@@ -58,9 +59,13 @@ function addCheckbox(id, checked = false, label = '') {
         checkbox.checked = checked;
         checkbox.addEventListener("click", () => toggleButton(id)); // Toggle event
 
+
+        const col = document.createElement('div');
+        col.setAttribute('class', 'col');
         // Append the new elements to the container
-        container.appendChild(labelElement);
-        container.appendChild(checkbox);
+        col.appendChild(labelElement);
+        col.appendChild(checkbox);
+        container.appendChild(col);
     }
 }
 
@@ -70,6 +75,8 @@ function addLabelEditor(id, label = '') {
     const editorContainer = document.getElementById("labelEditorContainer");
     const inputGroup = document.createElement("div");
     inputGroup.classList.add("input-group", "mb-3");
+
+    /*
 
     // Create the 'X' button for removing the input
     const removeButton = document.createElement("button");
@@ -82,6 +89,7 @@ function addLabelEditor(id, label = '') {
         socket.emit('removeCheckbox', {"id": id});
     };
 
+    */
     const input = document.createElement("input");
     input.type = "text";
     input.classList.add("form-control");
@@ -94,7 +102,7 @@ function addLabelEditor(id, label = '') {
     button.textContent = "Update";
     button.onclick = () => saveLabel(id, input.value);
 
-    inputGroup.appendChild(removeButton);
+   // inputGroup.appendChild(removeButton);
     
     inputGroup.appendChild(input);
     inputGroup.appendChild(button);

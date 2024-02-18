@@ -32,12 +32,12 @@ io.on('connection', (socket) => {
         }
         socket.broadcast.emit('updateLabel', data); // Broadcast label update to all clients
     });
-
+/*
     socket.on('removeCheckbox', (id) => {
         delete checkboxes[id];
         socket.emit('deleteCheckbox', id); // Broadcast deletion to all clients
     });
-
+*/
     socket.on('toggleCheckbox', (data) => {
         const { id, checked } = data;
         if (checkboxes[id]) {
