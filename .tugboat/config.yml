@@ -1,9 +1,11 @@
 services:
   node:
     image: tugboatqa/node:current-bullseye
+    expose: 3000
     commands: 
       init:
          npm install
-         npm start
+      start: 
+        - npm start --prefix ${TUGBOAT_ROOT} &
          
 

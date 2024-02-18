@@ -45,27 +45,35 @@ socket.on('deleteCheckbox', (id) => {
 
 /*** DOM manipulation functions to add page elements ***/
 
+/*** 
+ *  <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+*/
+
 // Function to add a checkbox
 function addCheckbox(id, checked = false, label = '') {
-    const container = document.getElementById("cbxContainerRow");
+    const container = document.getElementById("checkboxContainer");
     if (!document.getElementById(id)) { // Prevent duplicate IDs
         const labelElement = document.createElement("label");
         labelElement.setAttribute("for", id);
+        labelElement.setAttribute('class', "btn btn-outline-primary m-2 ");
         labelElement.textContent = label; // Set the checkbox label text
 
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = id;
         checkbox.checked = checked;
+        checkbox.setAttribute('class', 'btn-check');
+        checkbox.setAttribute('autocomplete', 'off');
         checkbox.addEventListener("click", () => toggleButton(id)); // Toggle event
 
 
-        const col = document.createElement('div');
-        col.setAttribute('class', 'col');
+        
         // Append the new elements to the container
-        col.appendChild(labelElement);
-        col.appendChild(checkbox);
-        container.appendChild(col);
+        container.appendChild(checkbox);
+        container.appendChild(labelElement);
+    
+        
     }
 }
 
@@ -89,6 +97,8 @@ function addLabelEditor(id, label = '') {
         socket.emit('removeCheckbox', {"id": id});
     };
 
+
+    
     */
     const input = document.createElement("input");
     input.type = "text";
