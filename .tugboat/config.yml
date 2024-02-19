@@ -3,9 +3,11 @@ services:
     image: tugboatqa/node:current-bullseye
     expose: 3000
     commands: 
-      init:
+      init: 
+        - mkdir /etc/service/node
+        - echo '#!/bin/sh' > /etc/service/node/run
+        - echo 'npm start --prefix ${TUGBOAT_ROOT}' >> /etc/service/node/run
+        - chmod +x /etc/service/node/run
+      build:
          npm install
-      start: 
-        - npm start --prefix ${TUGBOAT_ROOT} &
-         
 
