@@ -43,17 +43,15 @@ io.on('connection', (socket) => {
         if (checkboxes[id]) {
             checkboxes[id].checked = checked;
         }
-        console.log('caught toggleCheckbox');
-        console.log(data);
         socket.broadcast.emit('toggleCheckbox', data); // Broadcast toggle state to all clients
     });
 
     socket.on('disconnect', () => {
-        console.log('User disconnected');
+      //  console.log('User disconnected');
     });
 });
 
-server.listen(3000, () => {
-    console.log('Listening on *:3000');
+server.listen(process.env.PORT || 3000, () => {
+    console.log('Server is listening');
     
 });
